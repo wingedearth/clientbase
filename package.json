@@ -1,0 +1,13 @@
+{
+  "name": "clientbase",
+  "version": "1.0.0",
+  "description": "a client and server for rendering",
+  "main": "index.js",
+  "repository": "https://github.com/wingedearth/clientbase.git",
+  "author": "Andrew A. Anissi <andrew@wingedearth.com>",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "start": "node ./index"
+  }
+}
