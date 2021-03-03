@@ -1,6 +1,6 @@
 {
   "name": "clientbase",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a client and server for rendering",
   "main": "index.js",
   "repository": "https://github.com/wingedearth/clientbase.git",
