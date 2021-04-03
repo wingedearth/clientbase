@@ -17,6 +17,9 @@ module.exports = {
       }
     ],
     'comma-dangle': ['error', 'never'],
+    'global-require': 0,
+    'import/no-extraneous-dependencies': 0,
+    'no-console': 0,
     'no-unused-vars': 1
   }
 };
