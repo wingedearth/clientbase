@@ -20,7 +20,7 @@ const config = (variables) => {
       alias: {
         '@': path.join(__dirname, 'src')
       },
-      extensions: ['.js', '.json', 'jsx'],
+      extensions: ['.js', '.json', '.jsx'],
       modules: ['node_modules']
     },
     module: {
