@@ -5,7 +5,8 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: ['airbnb', 'airbnb/hooks', 'prettier'],
+  extends: ['plugin:react/recommended', 'standard', 'prettier'],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       modules: true,
@@ -14,7 +15,7 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module'
   },
-  plugins: ['prettier'],
+  plugins: ['import', 'prettier', 'react'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -25,9 +26,18 @@ module.exports = {
       }
     ],
     'comma-dangle': ['error', 'never'],
+    'consistent-return': 0,
+    'react/forbid-prop-types': 0,
+    'react/jsx-filename-extension': 0,
+    'react/require-default-props': 0,
     'global-require': 0,
     'import/no-extraneous-dependencies': 0,
     'no-console': 0,
     'no-unused-vars': 1
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };

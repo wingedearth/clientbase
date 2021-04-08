@@ -1,6 +1,6 @@
 {
   "name": "clientbase",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "a client and server for rendering",
   "main": "index.js",
   "repository": "https://github.com/wingedearth/clientbase.git",
@@ -14,7 +14,7 @@
     "clean": "yarn rimraf dist",
     "lint": "eslint .",
     "release": "standard-version",
-    "start": "node ./dist/server/server.js"
+    "start": "NODE_ENV=production node ./dist/server/server.js"
   },
   "husky": {
     "hooks": {
@@ -30,6 +30,9 @@
     "core-js": "^3.10.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "prop-types": "^15.7.2",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "serialize-javascript": "^5.0.1",
     "serve-favicon": "^2.5.0"
   },
@@ -39,11 +42,13 @@
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
+    "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.2.0",
-    "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",

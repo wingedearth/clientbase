@@ -29,8 +29,8 @@ const getVariables = () => {
   return { variables, variablesWatch };
 };
 
-const cb = (error, stats) => {
-  if (error) console.error('error:', error);
+const cb = (error, stats, watch) => {
+  if (error) console.error(`error: ${error}`.red);
 
   console.log(
     stats.toString({
@@ -43,12 +43,16 @@ const cb = (error, stats) => {
     })
   );
 
-  console.log('Build complete'.brightMagenta);
+  if (watch) {
+    console.log('Webpack is watching.'.brightMagenta);
+  } else {
+    console.log('Build complete'.brightMagenta);
+  }
 };
 
 const build = (variables) => {
   console.log('Starting build'.cyan);
-  return webpack(serverConfig(variables), cb);
+  return webpack(serverConfig(variables), (error, stats) => cb(error, stats, variables.watch));
 };
 
 const startBuild = () => {
