@@ -3,10 +3,11 @@
     "@babel/preset-react",
     [
       "@babel/env",
-      {
-        "useBuiltIns": "entry",
-        "corejs": "3.10.0"
-      }
+        {
+          "modules": false,
+          "useBuiltIns": "entry",
+          "corejs": "3.10.0"
+        }
     ]
   ],
   "plugins": [

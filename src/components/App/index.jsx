@@ -9,14 +9,14 @@ import { AppContext } from './context';
  * @returns {React.ReactElement}
  */
 const App = ({ children, data }) => (
-  <AppContext.Provider value={data}>
-    <main>{children}</main>
-  </AppContext.Provider>
+	<AppContext.Provider value={data}>
+		<main>{children}</main>
+	</AppContext.Provider>
 );
 
 App.propTypes = {
-  children: any,
-  data: object
+	children: any,
+	data: object
 };
 
 App.displayName = 'App';
