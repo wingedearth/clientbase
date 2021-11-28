@@ -1,8 +1,10 @@
 const path = require('path');
 const getRules = require('./webpack/rules');
 const getPlugins = require('./webpack/plugins');
+const getOptimization = require('./webpack/optimization');
 
 const isServer = false;
+const optimization = getOptimization({ isServer: true });
 
 /**
  * @function clientConfig
@@ -28,13 +30,14 @@ module.exports = (variables) => {
 				'@': path.join(__dirname, 'src'),
 				process: 'process/browser'
 			},
-			extensions: ['.js', '.json', '.jsx'],
+			extensions: ['.js', '.json', '.jsx', 'css', 'sass', '.scss'],
 			modules: ['node_modules']
 		},
 		module: {
-			rules: getRules(isServer)
+			rules: getRules({ isServer })
 		},
 		plugins: getPlugins(isServer, variables),
+		optimization,
 		target: 'web',
 		watchOptions: {
 			ignored: /node_modules/

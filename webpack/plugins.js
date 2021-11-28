@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 /**
  * @function getPlugins
@@ -9,8 +10,8 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
  */
 module.exports = (isServer, { APP_VERSION, NODE_ENV, isProd }) => {
 	const definePluginBase = {
-		'process.env.APP_VERSION': JSON.stringify(APP_VERSION)
-		// 'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+		'process.env.APP_VERSION': JSON.stringify(APP_VERSION),
+		'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
 	};
 
 	return [
@@ -19,11 +20,17 @@ module.exports = (isServer, { APP_VERSION, NODE_ENV, isProd }) => {
 			publicPath: true,
 			writeToDisk: true
 		}),
-		isServer && new webpack.DefinePlugin(definePluginBase),
+		isServer
+			? new webpack.DefinePlugin(definePluginBase)
+			: new webpack.DefinePlugin({
+					...definePluginBase,
+					'process.env.foo': 'bar'
+			  }),
 		!isServer &&
-			new webpack.DefinePlugin({
-				...definePluginBase,
-				'process.env.foo': 'bar'
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].css',
+				chunkFilename: 'css/[id].css',
+				ignoreOrder: true
 			}),
 		new CleanWebpackPlugin()
 	].filter(Boolean);

@@ -8,9 +8,26 @@ import serialize from 'serialize-javascript';
  */
 export const getScriptTags = (files) => {
 	if (files) {
-		return files.map((file) => `<script type="text/javascript" src="/${file}"></script>`).join('\n');
+		return files
+			.map((file) => `<script type="text/javascript" src="/${file}"></script>`)
+			.join('\n');
 	}
 	console.log('js files not found.');
+};
+
+/**
+ * @function getStyleTags
+ * @description takes an array of filenames and creates a string including a link tag to import each css file referenced by name
+ * @param {Array} files - file names
+ * @returns {Array}
+ */
+export const getStyleTags = (files) => {
+	if (!Array.isArray(files)) {
+		console.log('Unable to load styles');
+
+		return [];
+	}
+	return files.map((file) => `<link rel="stylesheet" href="/${file}"></link>`).join('\n');
 };
 
 /**
@@ -25,6 +42,7 @@ const template = (data, markup, entryName) => {
 	const manifest = require('../../dist/client/assets-manifest.json');
 	const entry = manifest?.entrypoints?.[entryName]?.assets;
 	const scriptTags = getScriptTags(entry?.js);
+	const styleTags = getStyleTags(entry?.css);
 
 	return `
 	<!DOCTYPE html>
@@ -35,6 +53,7 @@ const template = (data, markup, entryName) => {
 				<title>${`${appTitle} - ${pageTitle}`}</title>
 				<link rel="preconnect" href="https://fonts.gstatic.com"> 
 				<link href="https://fonts.googleapis.com/css2?family=Exo:wght@500;600;700;800&display=swap" rel="stylesheet">
+				${styleTags}
 			</head>
 			<body>
 				<div id="root">${markup}</div>

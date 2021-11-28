@@ -21,7 +21,7 @@ module.exports = {
 			'error',
 			{
 				singleQuote: true,
-				printWidth: 120,
+				printWidth: 100,
 				trailingComma: 'none',
 				useTabs: true
 			}
