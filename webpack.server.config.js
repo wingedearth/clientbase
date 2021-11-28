@@ -2,8 +2,10 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const getRules = require('./webpack/rules');
 const getPlugins = require('./webpack/plugins');
+const getOptimization = require('./webpack/optimization');
 
 const isServer = true;
+const optimization = getOptimization({ isServer: true });
 
 /**
  * @function serverConfig
@@ -32,9 +34,10 @@ module.exports = (variables) => {
 			modules: ['node_modules']
 		},
 		module: {
-			rules: getRules(isServer)
+			rules: getRules({ isServer })
 		},
 		plugins: getPlugins(isServer, variables),
+		optimization,
 		target: 'node',
 		externals: [
 			nodeExternals({

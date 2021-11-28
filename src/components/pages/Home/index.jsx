@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '@/components/App/context';
+import './home.scss';
 
 const Home = () => {
 	const [greeting, updateGreeting] = useState('');
@@ -13,7 +14,7 @@ const Home = () => {
 
 	return (
 		<div className="home" data-hook="home">
-			<p>{welcomeText}</p>
+			<h1 className="welcome">{welcomeText}</h1>
 			<p>{appText}</p>
 			{greeting && <p>{greeting}</p>}
 		</div>

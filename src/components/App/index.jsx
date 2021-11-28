@@ -1,6 +1,7 @@
 import React from 'react';
 import { any, object } from 'prop-types';
 import { AppContext } from './context';
+import '@/styles/styles.scss';
 
 /**
  * @function App

@@ -10,7 +10,7 @@ const getVariables = () => {
 	const { IS_DEPLOYED } = process.env;
 	if (!IS_DEPLOYED) require('dotenv').config();
 	const APP_VERSION = process.env.APP_VERSION || process.env.npm_package_version;
-	const NODE_ENV = process.env.NODE_ENV || null;
+	const NODE_ENV = process.env.NODE_ENV || 'development';
 	const isProd = NODE_ENV === 'production';
 	const mode = isProd ? 'production' : 'development';
 	const devtool = isProd ? 'source-map' : 'eval-cheap-module-source-map';
