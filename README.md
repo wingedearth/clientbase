@@ -15,6 +15,9 @@ A base client with server for rendering pages.
 2. [Node.js](https://nodejs.org) v.10+
 3. [Git](https://git-scm.com)
 4. [BabelJS](http://babeljs.io)
+5. [Webpack](https://webpack.js.org)
+6. [React 16](https://reactjs.org/)
+7. [@svgr/webpack](https://www.npmjs.com/package/@svgr/webpack)
 
 ## Set up your local repository
 
