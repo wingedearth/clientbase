@@ -24,5 +24,5 @@ A base client with server for rendering pages.
 
 ## Starting the Application
 
-1. Enter ```npm build``` on the command line to build/transpile application.
-2. Enter ```npm start``` on the command line to start application.
+1. Enter ```yarn build``` on the command line to build/transpile application.
+2. Enter ```yarn start``` on the command line to start application.

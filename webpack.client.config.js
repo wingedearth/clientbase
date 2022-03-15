@@ -1,14 +1,13 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const getRules = require('./webpack/rules');
 const getPlugins = require('./webpack/plugins');
 const getOptimization = require('./webpack/optimization');
 
-const isServer = true;
+const isServer = false;
 const optimization = getOptimization({ isServer: true });
 
 /**
- * @function serverConfig
+ * @function clientConfig
  * @param {Object} variables
  * @returns {Object}
  */
@@ -20,17 +19,18 @@ module.exports = (variables) => {
 		mode,
 		watch,
 		entry: {
-			server: path.join(__dirname, 'src', 'server', 'server.js')
+			home: path.join(__dirname, 'src', 'entries/home.js')
 		},
 		output: {
-			filename: '[name].js',
-			path: path.resolve(__dirname, 'dist', 'server')
+			filename: 'js/[name].js',
+			path: path.resolve(__dirname, 'dist', 'client')
 		},
 		resolve: {
 			alias: {
-				'@': path.join(__dirname, 'src')
+				'@': path.join(__dirname, 'src'),
+				process: 'process/browser'
 			},
-			extensions: ['.js', '.json', '.jsx'],
+			extensions: ['.js', '.json', '.jsx', 'css', 'sass', '.scss'],
 			modules: ['node_modules']
 		},
 		module: {
@@ -38,12 +38,7 @@ module.exports = (variables) => {
 		},
 		plugins: getPlugins(isServer, variables),
 		optimization,
-		target: 'node',
-		externals: [
-			nodeExternals({
-				allowlist: ['webpack/hot/dev-server', /\.(?!(?:jsx?|json)$).{1,5}$/i]
-			})
-		],
+		target: 'web',
 		watchOptions: {
 			ignored: /node_modules/
 		}
