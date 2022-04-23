@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '@/components/App/context';
+import Longfellow from '@/assets/images/longfellow.jpg';
+import BlackHorse from '@/assets/images/blackhorse.svg';
 import './home.scss';
 
 const Home = () => {
@@ -17,6 +19,10 @@ const Home = () => {
 			<h1 className="welcome">{welcomeText}</h1>
 			<p>{appText}</p>
 			{greeting && <p>{greeting}</p>}
+			<img src={Longfellow} />
+			<div className="home__blackhorse">
+				<BlackHorse />
+			</div>
 		</div>
 	);
 };

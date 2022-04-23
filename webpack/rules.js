@@ -4,6 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const babelServerConfigFile = path.join(__dirname, '..', 'babel.server.config.json');
 const babelClientConfigFile = path.join(__dirname, '..', 'babel.config.json');
 
+const imageRule = () => ({
+	test: /\.(png|jpg|jpeg|gif)$/i,
+	type: 'asset/resource'
+});
+
 const jsRule = ({ isServer }) => {
 	const configFile = isServer ? babelServerConfigFile : babelClientConfigFile;
 
@@ -45,4 +50,15 @@ const styleRule = ({ isServer }) => ({
 	].filter(Boolean)
 });
 
-module.exports = (options = {}) => [jsRule(options), jsxRule(options), styleRule(options)];
+const svgRule = () => ({
+	test: /\.svg$/i,
+	use: ['@svgr/webpack']
+});
+
+module.exports = (options = {}) => [
+	imageRule(),
+	jsRule(options),
+	jsxRule(options),
+	styleRule(options),
+	svgRule()
+];
