@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/env",
+        {
+          "modules": false,
+          "useBuiltIns": "entry",
+          "corejs": "3.10.0"
+        }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}
