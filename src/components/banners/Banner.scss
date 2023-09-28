@@ -1,0 +1,12 @@
+@import '@/styles/helpers';
+
+.banner {
+    padding: 10px;
+    height: 55px;
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 800;
+}
