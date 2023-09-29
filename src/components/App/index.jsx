@@ -1,6 +1,7 @@
 import React from 'react';
 import { any, object } from 'prop-types';
 import { AppContext } from './context';
+import Banner from '@/components/banners/Banner';
 import '@/styles/styles.scss';
 
 /**
@@ -11,7 +12,12 @@ import '@/styles/styles.scss';
  */
 const App = ({ children, data }) => (
 	<AppContext.Provider value={data}>
-		<main>{children}</main>
+		<main>
+			<Banner>
+				Client Base
+			</Banner>
+			{children}
+		</main>
 	</AppContext.Provider>
 );
 
