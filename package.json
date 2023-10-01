@@ -14,7 +14,7 @@
     "clean": "yarn rimraf dist",
     "lint": "eslint .",
     "release": "standard-version",
-    "start": "NODE_ENV=production node ./dist/server/server.js"
+    "start": "yarn build:prod && NODE_ENV=production node ./dist/server/server.js"
   },
   "husky": {
     "hooks": {
